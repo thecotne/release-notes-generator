@@ -62,5 +62,8 @@
     "test:style": "standard",
     "test:suite": "nyc tap ./.test/{scenarios,specs}/*.js",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
+  },
+  "release": {
+    "generateNotes": "."
   }
 }
