@@ -8,7 +8,11 @@ module.exports = function (pluginConfig, {pkg}, cb) {
     version: pkg.version,
     repository: repository,
     preset: 'angular'
-  }).on('data', data => {
-    cb(data.toString())
+  })
+  .on('data', data => {
+    cb(null, data.toString())
+  })
+  .on('error', err => {
+    cb(err, null)
   })
 }
