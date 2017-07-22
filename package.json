@@ -1,9 +1,9 @@
 {
-  "name": "@semantic-release/release-notes-generator",
+  "name": "@thecotne/release-notes-generator",
   "description": "generates the release notes/changelog",
-  "author": "Stephan Bönnemann <stephan@boennemann.me> (http://boennemann.me)",
+  "author": "cotne nazarashvili <cotne.95@gmail.com>",
   "bugs": {
-    "url": "https://github.com/semantic-release/release-notes-generator/issues"
+    "url": "https://github.com/thecotne/release-notes-generator/issues"
   },
   "config": {
     "nyc": {
@@ -11,23 +11,29 @@
         ".test",
         "node_modules"
       ]
+    },
+    "commitizen": {
+      "path": "./node_modules/mol-conventional-changelog"
     }
   },
   "dependencies": {
-    "conventional-changelog": "0.0.17",
+    "conventional-changelog": "^1.1.4",
     "github-url-from-git": "^1.4.0"
   },
   "devDependencies": {
-    "babel": "^5.5.8",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "coveralls": "^2.11.2",
     "mkdirp": "^0.5.1",
-    "nyc": "^3.0.0",
+    "mol-conventional-changelog": "^1.2.0",
+    "nyc": "^11.0.3",
     "proxyquire": "^1.5.0",
     "rimraf": "^2.4.0",
-    "standard": "^4.2.1",
-    "tap": "^1.2.0"
+    "semantic-release": "^6.3.6",
+    "standard": "^10.0.2",
+    "tap": "^10.7.0"
   },
-  "homepage": "https://github.com/semantic-release/release-notes-generator#readme",
+  "homepage": "https://github.com/thecotne/release-notes-generator#readme",
   "keywords": [
     "semantic-release",
     "author",
@@ -44,7 +50,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/semantic-release/release-notes-generator.git"
+    "url": "https://github.com/thecotne/release-notes-generator.git"
   },
   "scripts": {
     "build": "rimraf dist && mkdirp dist && babel src --out-dir dist",
@@ -54,6 +60,7 @@
     "pretest:suite": "npm run build && npm run build:tests",
     "test": "npm run test:style && npm run test:suite",
     "test:style": "standard",
-    "test:suite": "nyc tap --no-cov .test/{scenarios,specs}/*.js"
+    "test:suite": "nyc tap ./.test/{scenarios,specs}/*.js",
+    "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
   }
 }
