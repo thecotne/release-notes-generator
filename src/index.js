@@ -7,6 +7,8 @@ module.exports = function (pluginConfig, {pkg}, cb) {
   changelog({
     version: pkg.version,
     repository: repository,
-    file: false
-  }, cb)
+    preset: 'angular'
+  }).on('data', data => {
+    cb(data.toString())
+  })
 }
